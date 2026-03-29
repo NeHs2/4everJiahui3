@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Monthsary 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom right, #ffd6e7, #ffc0cb);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.container {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: #ff4d88;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #ff85a2;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff5c8a;
+}
+
+.hidden {
+    display: none;
+}
+
+.option {
+    font-size: 45px;
+    cursor: pointer;
+    margin: 20px;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 17px;
+    color: #333;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.cat {
+    width: 120px;
+    margin: 10px;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: fall 5s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="start">
+    <h1>Do you want to open it my sweet beautiful girl? 💖</h1>
+    <button onclick="yesClicked()">Yes 💗</button>
+    <button onclick="noClicked()">No 😢</button>
+    <p id="sadMsg"></p>
+</div>
+
+<div class="container hidden" id="options">
+    <h1>Choose something 💕</h1>
+    <div>
+        <span class="option" onclick="showFlower()">🌸</span>
+        <span class="option" onclick="showSong()">🎵</span>
+        <span class="option" onclick="showLetter()">💌</span>
+        <span class="option" onclick="showHearts()">💖</span>
+    </div>
+    <div id="message"></div>
+</div>
+
+<script>
+function yesClicked() {
+    document.getElementById("start").classList.add("hidden");
+    document.getElementById("options").classList.remove("hidden");
+}
+
+function noClicked() {
+    document.getElementById("sadMsg").innerHTML = "😢 but i promise it's good my love...";
+    setTimeout(() => {
+        document.getElementById("sadMsg").innerHTML = "";
+    }, 2000);
+}
+
+function showFlower() {
+    document.getElementById("message").innerHTML =
+    "<img class='cat' src='https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif'>" +
+    "<br><br>" +
+    "You remind me so much of lilies 🌸<br><br>" +
+    "Soft, elegant, and quietly beautiful in a way that makes everything around you feel calmer and brighter. " +
+    "Just like how lilies stand out in a gentle way, you shine in my life without even trying.<br><br>" +
+    "Being with you feels peaceful, like I’ve found a place where I truly belong. " +
+    "Every little thing about you means so much to me — your smile, your voice, even the way you exist.<br><br>" +
+    "If I could choose again and again, I would still choose you every single time 💖";
+}
+
+function showSong() {
+    document.getElementById("message").innerHTML =
+    "<img class='cat' src='https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif'>" +
+    "<br><br>" +
+    "🎶 'UNDERSTAND - keshi' 🎶<br><br>" +
+    "This song reminded me of the day we met, and when we hung out, this song was repeated over and over 💕<br><br>" +
+    "Every time I hear it now, it takes me back to those moments with you — the laughs, the little things, and the way everything just felt right.<br><br>" +
+    "It’s like this song holds a piece of our story, something only we truly understand.<br><br>" +
+    "I really hope one day, we’ll hear this playing at our wedding, smiling at each other knowing how far we’ve come together 💍💖";
+}
+
+function showLetter() {
+    document.getElementById("message").innerHTML =
+    "<img class='cat' src='https://media.giphy.com/media/ICOgUNjpvO0PC/giphy.gif'>" +
+    "<br><br>" +
+    "This month wasn’t easy… but we’re still here 💕<br><br>" +
+    "We had our ups and downs, moments where things felt heavy or difficult, " +
+    "but through all of that, we didn’t let go of each other.<br><br>" +
+    "And honestly, that’s what matters most to me — that no matter what happens, we’re still choosing to stay.<br><br>" +
+    "I don’t expect us to be perfect, I just want us to keep trying, keep loving, and keep growing together.<br><br>" +
+    "As long as I have you, I know we can get through anything 💖";
+}
+
+function showHearts() {
+    document.getElementById("message").innerHTML = "";
+
+    for (let i = 0; i < 100; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = ["💖","💗","💓","💞"][Math.floor(Math.random()*4)];
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+    }
+
+    let loveText = "<img class='cat' src='https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif'><br><br>";
+    for (let i = 0; i < 100; i++) {
+        loveText += "I love you 💖<br>";
+    }
+
+    document.getElementById("message").innerHTML = loveText;
+}
+</script>
+
+</body>
+</html>
